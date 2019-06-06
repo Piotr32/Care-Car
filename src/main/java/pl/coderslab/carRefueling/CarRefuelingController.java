@@ -57,7 +57,6 @@ public class CarRefuelingController {
         List<CarRefueling> carRefueling = carRefuelingService.findAllCarRefueling();
         model.addAttribute("carRefueling", carRefueling);
         model.addAttribute("totalCost",carRefuelingService.getTotalRefuelingCost());
-        model.addAttribute("date", carRefuelingService.findClosest());
         return "carRefuelingList";
     }
 

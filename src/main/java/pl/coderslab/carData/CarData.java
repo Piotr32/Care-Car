@@ -1,6 +1,8 @@
 package pl.coderslab.carData;
 
 import pl.coderslab.carHistory.CarHistory;
+
+import pl.coderslab.carOrganizer.CarOrganizer;
 import pl.coderslab.carRefueling.CarRefueling;
 import pl.coderslab.user.User;
 
@@ -28,6 +30,9 @@ public class CarData {
 
     @OneToMany(mappedBy = "carData", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<CarRefueling> carRefueling = new HashSet<>();
+
+    @OneToMany(mappedBy = "carData", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<CarOrganizer> carOrganizer = new HashSet<>();
 
     private String vehicleType; // rodzaj pojazdu, do wyboru Car, Motorbike
 

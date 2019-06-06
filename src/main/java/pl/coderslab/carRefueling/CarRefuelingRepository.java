@@ -6,10 +6,10 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface CarRefuelingRepository extends JpaRepository<CarRefueling, Long> {
 
-    @Modifying
-    @Query(value = "update carRefueling set carData_id = null where carData_id = ?1", nativeQuery = true)
-    public void deleteCarDataRalation(Long id);
 
-    @Query(value = "select * from carRefueling where carRefueling.date=<current_date order by carRefueling.date limit 1", nativeQuery = true)
-    public CarRefueling findClosest();
-}
+        @Modifying
+        @Query(value = "update carRefueling set carData_id = null where carData_id = ?1", nativeQuery = true)
+        public void deleteCarDataRalation(Long id);
+
+
+    }

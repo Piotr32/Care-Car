@@ -1,13 +1,15 @@
-package pl.coderslab.carHistory;
+package pl.coderslab.carOrganizer;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import pl.coderslab.carData.CarData;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.time.LocalDate;
 
 @Entity
-@Table(name = "carHistory")
-public class CarHistory {
+@Table(name = "carOrganizer")
+public class CarOrganizer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,23 +21,20 @@ public class CarHistory {
     @NotBlank
     private String event; // wydarzenie;
 
-
-    private String date; // data wydarzenia;
-
-    private String howManyKmDriven; // ile kilometrów zostało przejechane;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate date; //data
 
     private double expenses; // wydatki
 
     private String notes; // notes
 
-    public CarHistory() {
+    public CarOrganizer() {
     }
 
-    public CarHistory(CarData carData, @NotBlank String event, String date, String howManyKmDriven, double expenses, String notes) {
+    public CarOrganizer(CarData carData, @NotBlank String event, LocalDate date, double expenses, String notes) {
         this.carData = carData;
         this.event = event;
         this.date = date;
-        this.howManyKmDriven = howManyKmDriven;
         this.expenses = expenses;
         this.notes = notes;
     }
@@ -64,20 +63,12 @@ public class CarHistory {
         this.event = event;
     }
 
-    public String getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDate date) {
         this.date = date;
-    }
-
-    public String getHowManyKmDriven() {
-        return howManyKmDriven;
-    }
-
-    public void setHowManyKmDriven(String howManyKmDriven) {
-        this.howManyKmDriven = howManyKmDriven;
     }
 
     public double getExpenses() {
@@ -96,4 +87,3 @@ public class CarHistory {
         this.notes = notes;
     }
 }
-

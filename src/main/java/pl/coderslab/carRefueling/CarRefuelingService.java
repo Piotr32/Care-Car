@@ -47,7 +47,5 @@ public class CarRefuelingService {
         carRefuelingRepository.deleteById(id);
     }
 
-    public CarRefueling findClosest(){return carRefuelingRepository.findClosest();}
 
 }
-

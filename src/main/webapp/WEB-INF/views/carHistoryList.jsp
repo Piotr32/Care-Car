@@ -33,6 +33,8 @@
             <a href="/carData/add" class="btn btn-primary">Dodaj pojazd</a>
             <a href="/carData/list" class="btn btn-primary">Lista pojazdów</a>
             <a href="/carHistory/add" class="btn btn-primary">Dodaj wydarzenie</a>
+            <a href="/carOrganizer/add" class="btn btn-primary">Planowane wydarzenia</a>
+            <a href="/carOrganizer/list"class="btn btn-primary">Lista planowanych wydarzeń</a>
             <a href="/carRefueling/add" class="btn btn-primary">Dodaj tankowanie</a>
             <a href="/carRefueling/list" class="btn btn-primary">Lista tankowań</a>
         </div>

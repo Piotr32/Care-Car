@@ -2,7 +2,7 @@ package pl.coderslab.carHistory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.coderslab.carRefueling.CarRefueling;
+
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -47,6 +47,7 @@ public class CarHistoryService {
         carHistoryRepository.deleteCarDataRalation(id);
         carHistoryRepository.deleteById(id);
     }
+
 
 }
 

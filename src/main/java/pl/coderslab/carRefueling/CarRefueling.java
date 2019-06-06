@@ -5,6 +5,8 @@ import pl.coderslab.carData.CarData;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import java.time.LocalDate;
 
 
@@ -20,8 +22,8 @@ public class CarRefueling {
     @ManyToOne
     private CarData carData;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate date; //data
+
+    private String date; //data
 
     @NotBlank
     private String howManyLiters; // ile litrów zatankowano
@@ -33,7 +35,7 @@ public class CarRefueling {
     public CarRefueling() {
     }
 
-    public CarRefueling(CarData carData, LocalDate date, @NotBlank String howManyLiters, String fuelType, double total) {
+    public CarRefueling(CarData carData, String date, @NotBlank String howManyLiters, String fuelType, double total) {
         this.carData = carData;
         this.date = date;
         this.howManyLiters = howManyLiters;
@@ -57,11 +59,11 @@ public class CarRefueling {
         this.carData = carData;
     }
 
-    public LocalDate getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -94,10 +96,11 @@ public class CarRefueling {
         return "CarRefueling{" +
                 "id=" + id +
                 ", carData=" + carData +
-                ", date=" + date +
+                ", date='" + date + '\'' +
                 ", howManyLiters='" + howManyLiters + '\'' +
                 ", fuelType='" + fuelType + '\'' +
                 ", total=" + total +
                 '}';
     }
 }
+

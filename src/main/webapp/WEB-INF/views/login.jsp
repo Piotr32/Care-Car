@@ -45,6 +45,8 @@
 
             </div>
             <div class="card-body">
+                <a href="/users/add" class="btn btn-primary">Utwórz nowe konto</a>
+                <br><br>
                 <a href="/" class="btn btn-primary">Powrót</a>
             </div>
         </div>
