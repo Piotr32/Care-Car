@@ -44,13 +44,13 @@
     <form:errors path="vinNo" element="div"/>
     <br/><br/>
 
-    <label for="oilTankCapacityId">Pojemność zbiornika oleju silnikowego:</label>
+    <label for="oilTankCapacityId">Pojemność silnika:</label>
     <form:input type="text" path="oilTankCapacity" id="oilTankCapacityId"/>
     <form:errors path="oilTankCapacity" element="div"/>
     <br/><br/>
 
     <label for="typesOfOilId">Rodzaj oleju silnikowego</label>
-    <form:input type="text" path="typesOfOil" id="typesOfOilId"/>
+    <form:select path="typesOfOil" items="${typesOfOil}" id="typesOfOilId"/>
     <form:errors path="typesOfOil" element="div"/>
     <br/><br/>
 

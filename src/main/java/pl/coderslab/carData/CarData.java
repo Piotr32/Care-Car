@@ -9,7 +9,6 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 
@@ -24,10 +23,10 @@ public class CarData {
     @ManyToOne
     private User user;
 
-    @OneToMany(mappedBy = "carData", fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @OneToMany(mappedBy = "carData", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<CarHistory> carHistory = new HashSet<>();
 
-    @OneToMany(mappedBy = "carData", fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @OneToMany(mappedBy = "carData", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<CarRefueling> carRefueling = new HashSet<>();
 
     private String vehicleType; // rodzaj pojazdu, do wyboru Car, Motorbike
@@ -51,8 +50,7 @@ public class CarData {
     @NotBlank
     private String oilTankCapacity; // pojemnośc zbiornika oleju;
 
-    @NotBlank
-    @Size(min = 4)
+
     private String typesOfOil; // rodzaj oleju;
 
     // Purchase (kupno), and Sale (sprzedaż)
@@ -76,7 +74,7 @@ public class CarData {
     public CarData() {
     }
 
-    public CarData(User user, Set<CarHistory> carHistory, Set<CarRefueling> carRefueling, String vehicleType, @NotBlank String vehicleName, @NotBlank String brand, @NotBlank String model, String fuelType, @NotBlank @Size(max = 17) String vinNo, @NotBlank String oilTankCapacity, @NotBlank @Size(min = 4) String typesOfOil, String datePurchase, int meterStatusPurchase, BigDecimal howMuchWasItPurchase, String dateSale, int meterStatusSale, BigDecimal howMuchWasItSale) {
+    public CarData(User user, Set<CarHistory> carHistory, Set<CarRefueling> carRefueling, String vehicleType, @NotBlank String vehicleName, @NotBlank String brand, @NotBlank String model, String fuelType, @NotBlank @Size(max = 17) String vinNo, @NotBlank String oilTankCapacity, String typesOfOil, String datePurchase, int meterStatusPurchase, BigDecimal howMuchWasItPurchase, String dateSale, int meterStatusSale, BigDecimal howMuchWasItSale) {
         this.user = user;
         this.carHistory = carHistory;
         this.carRefueling = carRefueling;
@@ -116,16 +114,16 @@ public class CarData {
         return carHistory;
     }
 
-    public void setCarHistory(List<CarHistory> carHistory) {
-        this.carHistory = new HashSet<>(carHistory);
+    public void setCarHistory(Set<CarHistory> carHistory) {
+        this.carHistory = carHistory;
     }
 
     public Set<CarRefueling> getCarRefueling() {
         return carRefueling;
     }
 
-    public void setCarRefueling(List<CarRefueling> carRefueling) {
-        this.carRefueling = new HashSet<>(carRefueling);
+    public void setCarRefueling(Set<CarRefueling> carRefueling) {
+        this.carRefueling = carRefueling;
     }
 
     public String getVehicleType() {
@@ -239,7 +237,6 @@ public class CarData {
     public void setHowMuchWasItSale(BigDecimal howMuchWasItSale) {
         this.howMuchWasItSale = howMuchWasItSale;
     }
-
 }
 
 

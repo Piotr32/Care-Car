@@ -67,5 +67,11 @@ public class CarHistoryController {
         carHistoryService.updateCarHistory(carHistory);
         return "redirect:../list";
     }
+
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable Long id) {
+        carHistoryService.deleteCarHistory(id);
+        return "redirect:../list";
+    }
 }
 

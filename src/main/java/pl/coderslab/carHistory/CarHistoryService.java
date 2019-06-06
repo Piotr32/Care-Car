@@ -43,6 +43,11 @@ public class CarHistoryService {
         return sum;
     }
 
+    public void deleteCarHistory(Long id) {
+        carHistoryRepository.deleteCarDataRalation(id);
+        carHistoryRepository.deleteById(id);
+    }
+
 }
 
 

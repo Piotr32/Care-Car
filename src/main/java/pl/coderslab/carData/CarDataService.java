@@ -29,6 +29,7 @@ public class CarDataService {
     }
 
     public void deleteCarData(Long id) {
+        carDataRepository.deleteUserRalation(id);
         carDataRepository.deleteById(id);
     }
 

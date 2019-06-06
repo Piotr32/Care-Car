@@ -11,6 +11,12 @@
     <title>Car Page</title>
 </head>
 <body>
+<div class="card-body">
+    <a href="/users/logout" class="btn btn-primary">Wylogowanie</a>
+</div>
+<br>
+<h1>Witaj!!! ${userSession.username}</h1>
+<br>
 <a href="/carData/list">Zarejestrowane pojazdy</a>
 <br>
 <a href="/carData/add">Zarejestruj pojazd</a>

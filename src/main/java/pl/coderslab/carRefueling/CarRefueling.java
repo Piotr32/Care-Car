@@ -1,9 +1,11 @@
 package pl.coderslab.carRefueling;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import pl.coderslab.carData.CarData;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.time.LocalDate;
 
 
 @Entity
@@ -18,7 +20,8 @@ public class CarRefueling {
     @ManyToOne
     private CarData carData;
 
-    private String date; //data
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate date; //data
 
     @NotBlank
     private String howManyLiters; // ile litrów zatankowano
@@ -30,7 +33,7 @@ public class CarRefueling {
     public CarRefueling() {
     }
 
-    public CarRefueling(CarData carData, String date, @NotBlank String howManyLiters, String fuelType, double total) {
+    public CarRefueling(CarData carData, LocalDate date, @NotBlank String howManyLiters, String fuelType, double total) {
         this.carData = carData;
         this.date = date;
         this.howManyLiters = howManyLiters;
@@ -54,11 +57,11 @@ public class CarRefueling {
         this.carData = carData;
     }
 
-    public String getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
@@ -84,5 +87,17 @@ public class CarRefueling {
 
     public void setTotal(double total) {
         this.total = total;
+    }
+
+    @Override
+    public String toString() {
+        return "CarRefueling{" +
+                "id=" + id +
+                ", carData=" + carData +
+                ", date=" + date +
+                ", howManyLiters='" + howManyLiters + '\'' +
+                ", fuelType='" + fuelType + '\'' +
+                ", total=" + total +
+                '}';
     }
 }

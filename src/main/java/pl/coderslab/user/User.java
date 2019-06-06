@@ -3,8 +3,6 @@ package pl.coderslab.user;
 
 
 import pl.coderslab.carData.CarData;
-import pl.coderslab.carHistory.CarHistory;
-
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -36,6 +34,13 @@ public class User {
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     private Set<CarData> carData = new HashSet<>();
 
+    public Set<CarData> getCarData() {
+        return carData;
+    }
+
+    public void setCarData(Set<CarData> carData) {
+        this.carData = carData;
+    }
 
     public Long getId() {
         return id;

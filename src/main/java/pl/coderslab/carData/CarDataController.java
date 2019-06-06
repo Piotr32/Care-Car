@@ -72,6 +72,21 @@ public class CarDataController {
         return fuelType;
     }
 
+    @ModelAttribute("typesOfOil")
+    public List<String> getTypesOfOil() {
+        List<String> typesOfOil = new ArrayList<>();
+        typesOfOil.add("Olej Mineralny 15W-40");
+        typesOfOil.add("Olej Mineralny 15W-50");
+        typesOfOil.add("Olej półsyntetyczny 10W-40");
+        typesOfOil.add("Olej półsyntetyczny 10W-60");
+        typesOfOil.add("Olej syntetyczny 0W-30");
+        typesOfOil.add("Olej syntetyczny 0W-40");
+        typesOfOil.add("Olej syntetyczny 5W-30");
+        typesOfOil.add("Olej syntetyczny 5W-40");
+        typesOfOil.add("Olej syntetyczny 5W-50");
+        return typesOfOil;
+    }
+
     @GetMapping("/update/{id}")
     public String update(@PathVariable Long id, Model model) {
         CarData carData = carDataService.findCarData(id);
@@ -90,6 +105,7 @@ public class CarDataController {
 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable Long id) {
+        carDataService.deleteCarData(id);
         return "redirect:../list";
     }
 

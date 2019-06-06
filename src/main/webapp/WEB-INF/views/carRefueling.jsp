@@ -24,7 +24,7 @@
     <br><br>
 
     <label for="fuelTypeId">Rodzaj paliwa:</label>
-    <form:checkboxes items="${fuelType}" path="fuelType" id="fuelTypeId"/>
+    <form:select path="fuelType" items="${fuelType}" id="fuelTypeId"/>
     <form:errors path="fuelType" element="div"/>
     <br/><br/>
 

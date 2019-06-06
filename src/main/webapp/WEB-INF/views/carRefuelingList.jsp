@@ -15,9 +15,9 @@
     <link href="<c:url value="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>" rel="stylesheet">
     <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet">
     <script>
-        function confirmDelete(id, title) {
-            if (confirm("Do you want to delete a car '" + title + "'?")) {
-                window.location.href = "/car/delete/" + id;
+        function confirmDelete(id, total) {
+            if (confirm("Chcesz usunąć tankowanie o wartości '" + total + "'?")) {
+                window.location.href = "/carRefueling/delete/" + id;
             }
         }
     </script>
@@ -37,7 +37,7 @@
             <a href="/carRefueling/add" class="btn btn-primary">Dodaj tankowanie</a>
         </div>
     </div>
-
+    <div>Data ostatniego tankowania = ${date.date}, wartość= ${date.total}</div>
     <div class="card mt-4">
         <div class="card-body">
 
@@ -48,7 +48,7 @@
                     <th>Rodzaj paliwa</th>
                     <th>Kwota</th>
 
-                    <th style="width:17%">Action</th>
+                    <th style="width:17%">Akcja</th>
                 </tr>
                 <c:forEach items="${carRefueling}" var="carRefueling">
                     <tr>
@@ -58,11 +58,11 @@
                         <td>${carRefueling.total}</td>
                         <td>
                             <a href="/carRefueling/update/${carRefueling.id}" class="btn btn-success">Edycja</a>
-                            <a href="#" onclick="confirmDelete(${carRefueling.id})" class="btn btn-danger">Usuń</a>
+                            <a href="#" onclick="confirmDelete(${carRefueling.id}, '${carRefueling.total}')" class="btn btn-danger">Usuń</a>
                         </td>
                     </tr>
                 </c:forEach>
-                ${totalCost}
+                <a>Razem</a> ${totalCost}</a>
             </table>
 
         </div>

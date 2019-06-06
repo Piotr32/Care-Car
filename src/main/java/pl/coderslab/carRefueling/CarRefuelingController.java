@@ -7,8 +7,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.carData.CarData;
 import pl.coderslab.carData.CarDataService;
-
-
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,14 +20,15 @@ public class CarRefuelingController {
 
 
     @Autowired
-    public CarRefuelingController(CarRefuelingService carRefuelingService) {
+    public CarRefuelingController(CarRefuelingService carRefuelingService, CarDataService carDataService) {
         this.carRefuelingService = carRefuelingService;
+        this.carDataService = carDataService;
     }
 
     @GetMapping("/add")
     public String addCarRefueling(Model model) {
         model.addAttribute("carRefueling", new CarRefueling());
-       // model.addAttribute("carDataList", carDataService.findAll());
+        model.addAttribute("carDataList", carDataService.findAll());
         return "carRefueling";
     }
 
@@ -58,6 +57,7 @@ public class CarRefuelingController {
         List<CarRefueling> carRefueling = carRefuelingService.findAllCarRefueling();
         model.addAttribute("carRefueling", carRefueling);
         model.addAttribute("totalCost",carRefuelingService.getTotalRefuelingCost());
+        model.addAttribute("date", carRefuelingService.findClosest());
         return "carRefuelingList";
     }
 
@@ -76,6 +76,12 @@ public class CarRefuelingController {
         CarData carData = carDataService.findCarData(id);
         model.addAttribute("carData", carData);
         carRefuelingService.updateCarRefueling(carRefueling);
+        return "redirect:../list";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable Long id) {
+        carRefuelingService.deleteCarRefueling(id);
         return "redirect:../list";
     }
 }

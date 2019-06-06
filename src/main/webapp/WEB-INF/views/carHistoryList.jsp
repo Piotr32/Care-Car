@@ -15,9 +15,9 @@
     <link href="<c:url value="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>" rel="stylesheet">
     <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet">
     <script>
-        function confirmDelete(id, title) {
-            if (confirm("Do you want to delete a car '" + title + "'?")) {
-                window.location.href = "/car/delete/" + id;
+        function confirmDelete(id, event) {
+            if (confirm("Czy chcesz usunąć wydarzenie " + event + "'?")) {
+                window.location.href = "/carHistory/delete/" + id;
             }
         }
     </script>
@@ -48,7 +48,7 @@
                     <th>Ile kilometrów zostało przejechane</th>
                     <th>Wydatki</th>
 
-                    <th style="width:17%">Action</th>
+                    <th style="width:17%">Akcja</th>
                 </tr>
                 <c:forEach items="${carHistory}" var="carHistory">
                     <tr>
@@ -58,11 +58,13 @@
                         <td>${carHistory.expenses}</td>
                         <td>
                             <a href="/carHistory/update/${carHistory.id}" class="btn btn-success">Edycja</a>
-                            <a href="#" onclick="confirmDelete(${carHistory.id})" class="btn btn-danger">Usuń</a>
+                            <a href="#" onclick="confirmDelete(${carHistory.id}, '${carHistory.event}')" class="btn btn-danger">Usuń</a>
                         </td>
+
                     </tr>
+
                 </c:forEach>
-                ${totalExpenses}
+                <a>Razem</a> ${totalExpenses}
             </table>
 
         </div>

@@ -42,5 +42,12 @@ public class CarRefuelingService {
         return sum;
     }
 
+    public void deleteCarRefueling(Long id) {
+        carRefuelingRepository.deleteCarDataRalation(id);
+        carRefuelingRepository.deleteById(id);
+    }
+
+    public CarRefueling findClosest(){return carRefuelingRepository.findClosest();}
+
 }
 
