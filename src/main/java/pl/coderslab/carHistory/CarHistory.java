@@ -1,6 +1,7 @@
 package pl.coderslab.carHistory;
 
 import pl.coderslab.carData.CarData;
+import pl.coderslab.user.User;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -28,16 +29,21 @@ public class CarHistory {
 
     private String notes; // notes
 
+    @ManyToOne
+    private User user;
+
+
     public CarHistory() {
     }
 
-    public CarHistory(CarData carData, @NotBlank String event, String date, String howManyKmDriven, double expenses, String notes) {
+    public CarHistory(CarData carData, @NotBlank String event, String date, String howManyKmDriven, double expenses, String notes, User user) {
         this.carData = carData;
         this.event = event;
         this.date = date;
         this.howManyKmDriven = howManyKmDriven;
         this.expenses = expenses;
         this.notes = notes;
+        this.user = user;
     }
 
     public Long getId() {
@@ -94,6 +100,14 @@ public class CarHistory {
 
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
 

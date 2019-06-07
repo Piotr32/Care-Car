@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
@@ -27,6 +28,17 @@ public class UserController {
         model.addAttribute("user", new User());
         return "user";
     }
+
+//    @PostMapping("/addUser")
+//    public String addUser(HttpSession session, @ModelAttribute @Validated User user, BindingResult result) {
+//        User user = (User)session.getAttribute("userSession");
+//        if (result.hasErrors()) {
+//            return "addUser";
+//        }
+//        user.setUsername();
+//        userService.saveUser(user);
+//        return "redirect:all";
+//    }
 
     @PostMapping("/add")
     public String addUser(@ModelAttribute @Valid User user, BindingResult result) {

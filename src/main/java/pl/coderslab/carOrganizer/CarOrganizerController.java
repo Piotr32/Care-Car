@@ -7,7 +7,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.carData.CarData;
 import pl.coderslab.carData.CarDataService;
+import pl.coderslab.user.User;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -32,7 +34,9 @@ public class CarOrganizerController {
     }
 
     @PostMapping("/add")
-    public String addCarOrganizer(@ModelAttribute @Valid CarOrganizer carOrganizer, BindingResult result) {
+    public String addCarOrganizer(@ModelAttribute @Valid CarOrganizer carOrganizer, BindingResult result, HttpSession session) {
+        User user = (User) session.getAttribute("userSession");
+        carOrganizer.setUser(user);
         if (result.hasErrors()) {
             return "carOrganizer";
         }
@@ -41,7 +45,8 @@ public class CarOrganizerController {
     }
 
     @GetMapping(value = "/list", produces = "text/html; charset=UTF-8")
-    public String carOrganizerList(Model model){
+    public String carOrganizerList(Model model, HttpSession session) {
+        User user = (User) session.getAttribute("userSession");
         List<CarOrganizer> carOrganizer = carOrganizerService.findAllCarOrganizer();
         model.addAttribute("carOrganizer", carOrganizer);
         model.addAttribute("totalExpenses",carOrganizerService.getExpensesOrganizerCost());

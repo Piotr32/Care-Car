@@ -7,6 +7,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.carData.CarData;
 import pl.coderslab.carData.CarDataService;
+import pl.coderslab.user.User;
+
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +36,9 @@ public class CarRefuelingController {
     }
 
     @PostMapping("/add")
-    public String addCarRefueling(@ModelAttribute @Valid CarRefueling carRefueling, BindingResult result) {
+    public String addCarRefueling(@ModelAttribute @Valid CarRefueling carRefueling, BindingResult result, HttpSession session) {
+        User user = (User) session.getAttribute("userSession");
+        carRefueling.setUser(user);
         if (result.hasErrors()) {
             return "carRefueling";
         }
@@ -53,7 +58,8 @@ public class CarRefuelingController {
     }
 
     @GetMapping(value = "/list", produces = "text/html; charset=UTF-8")
-    public String CarRefuelingList(Model model){
+    public String CarRefuelingList(Model model, HttpSession session) {
+        User user = (User) session.getAttribute("userSession");
         List<CarRefueling> carRefueling = carRefuelingService.findAllCarRefueling();
         model.addAttribute("carRefueling", carRefueling);
         model.addAttribute("totalCost",carRefuelingService.getTotalRefuelingCost());

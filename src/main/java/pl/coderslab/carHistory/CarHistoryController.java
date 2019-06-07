@@ -5,10 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.carData.CarData;
 import pl.coderslab.carData.CarDataService;
+import pl.coderslab.user.User;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -33,7 +36,9 @@ public class CarHistoryController {
     }
 
     @PostMapping("/add")
-    public String addCarHistory(@ModelAttribute @Valid CarHistory carHistory, BindingResult result) {
+    public String addCarHistory(@ModelAttribute @Valid CarHistory carHistory, BindingResult result, HttpSession session) {
+        User user = (User) session.getAttribute("userSession");
+        carHistory.setUser(user);
         if (result.hasErrors()) {
             return "carHistory";
         }
@@ -41,9 +46,12 @@ public class CarHistoryController {
         return "redirect:list";
     }
 
+
+
     @GetMapping(value = "/list", produces = "text/html; charset=UTF-8")
-    public String carHistoryList(Model model){
-        List<CarHistory> carHistory = carHistoryService.findAllCarHistory();
+    public String carHistoryList(Model model, HttpSession session) {
+        User user = (User) session.getAttribute("userSession");
+        List<CarHistory> carHistory = carHistoryService.findByCarHistoryByUserIdQuery(user.getId());
         model.addAttribute("carHistory", carHistory);
         model.addAttribute("totalExpenses",carHistoryService.getExpensesHistoryCost());
         return "carHistoryList";

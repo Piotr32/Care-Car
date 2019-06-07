@@ -37,7 +37,7 @@ public class LoginController {
         if (BCrypt.checkpw(password, user.getPassword())) {
             model.addAttribute("userSession", user);
             model.addAttribute("isLogged", true);
-            return "carPage";
+            return "/carDataList";
         }
         return "login";
     }

@@ -2,6 +2,7 @@ package pl.coderslab.carRefueling;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.coderslab.carOrganizer.CarOrganizer;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -47,5 +48,8 @@ public class CarRefuelingService {
         carRefuelingRepository.deleteById(id);
     }
 
+    public List<CarRefueling> findByCarRefuelingByUserIdQuery(Long id) {
+        return carRefuelingRepository.findByCarRefuelingByUserIdQuery(id);
+    }
 
 }

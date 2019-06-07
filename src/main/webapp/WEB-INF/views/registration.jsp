@@ -8,20 +8,20 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Registration</title>
 </head>
 <body>
 <div class="container">
 
     <form method="post">
 
-        <header>Registration</header>
+        <header>Rejestracja</header>
 
         <div class="card">
             <div class="card-body">
 
                 <input type="submit" value="Login" class="btn btn-primary">
-                <a href="/users/add" class="btn btn-primary">Register</a>
+                <a href="/users/add" class="btn btn-primary">Utwórz nowe konto</a>
 
             </div>
 

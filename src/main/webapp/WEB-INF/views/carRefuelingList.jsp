@@ -23,7 +23,7 @@
     </script>
 </head>
 <body>
-
+<%@include file="header.jspf" %>
 <div class="container">
 
     <header>Lista tankowań</header>
@@ -31,11 +31,8 @@
     <div class="card">
         <div class="card-body">
             <a href="/carData/add" class="btn btn-primary">Dodaj pojazd</a>
-            <a href="/carData/list" class="btn btn-primary">Lista pojazdów</a>
             <a href="/carHistory/add" class="btn btn-primary">Dodaj wydarzenie</a>
-            <a href="/carHistory/list" class="btn btn-primary">Lista wydarzeń</a>
             <a href="/carOrganizer/add" class="btn btn-primary">Planowane wydarzenia</a>
-            <a href="/carOrganizer/list"class="btn btn-primary">Lista planowanych wydarzeń</a>
             <a href="/carRefueling/add" class="btn btn-primary">Dodaj tankowanie</a>
         </div>
     </div>

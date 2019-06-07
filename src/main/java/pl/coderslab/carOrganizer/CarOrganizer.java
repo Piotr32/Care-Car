@@ -2,6 +2,7 @@ package pl.coderslab.carOrganizer;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import pl.coderslab.carData.CarData;
+import pl.coderslab.user.User;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -28,15 +29,19 @@ public class CarOrganizer {
 
     private String notes; // notes
 
+    @ManyToOne
+    private User user;
+
     public CarOrganizer() {
     }
 
-    public CarOrganizer(CarData carData, @NotBlank String event, LocalDate date, double expenses, String notes) {
+    public CarOrganizer(CarData carData, @NotBlank String event, LocalDate date, double expenses, String notes, User user) {
         this.carData = carData;
         this.event = event;
         this.date = date;
         this.expenses = expenses;
         this.notes = notes;
+        this.user = user;
     }
 
     public Long getId() {
@@ -85,5 +90,13 @@ public class CarOrganizer {
 
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

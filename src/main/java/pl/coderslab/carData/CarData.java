@@ -49,7 +49,7 @@ public class CarData {
     private String fuelType; // Rodzaj paliwa, Petrol, Diesel, Gas (LPG), Electric, Hybrid, Petrol and Gas
 
     @NotBlank
-    @Size(max = 17)
+    @Size(min = 17, max = 17)
     private String vinNo; // numer Vin
 
     @NotBlank

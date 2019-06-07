@@ -2,6 +2,7 @@ package pl.coderslab.carHistory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.coderslab.carData.CarData;
 
 
 import javax.transaction.Transactional;
@@ -48,6 +49,9 @@ public class CarHistoryService {
         carHistoryRepository.deleteById(id);
     }
 
+    public List<CarHistory> findByCarHistoryByUserIdQuery(Long id) {
+        return carHistoryRepository.findByCarHistoryByUserIdQuery(id);
+    }
 
 }
 

@@ -4,8 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import pl.coderslab.user.User;
+import pl.coderslab.user.UserService;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,15 +19,18 @@ import java.util.List;
 public class CarDataController {
 
     private CarDataService carDataService;
+    private UserService userService;
 
     @Autowired
-    public CarDataController (CarDataService carDataService) {
+    public CarDataController (CarDataService carDataService, UserService userService) {
         this.carDataService = carDataService;
+        this.userService = userService;
     }
 
     @GetMapping(value = "/list", produces = "text/html; charset=UTF-8")
-    public String getList(Model model) {
-        List<CarData> carData = carDataService.findAll();
+    public String getList(Model model, HttpSession session) {
+        User user = (User) session.getAttribute("userSession");
+        List<CarData> carData = carDataService.findByCarDataByUserIdQuery(user.getId());
         model.addAttribute("carData", carData);
         return "carDataList";
     }
@@ -44,14 +51,18 @@ public class CarDataController {
         }
     }
 
+
     @PostMapping("/add")
-    public String addCarData(@ModelAttribute @Valid CarData carData, BindingResult result) {
+    public String addCarData(@ModelAttribute @Valid CarData carData, BindingResult result,HttpSession session) {
+        User user = (User) session.getAttribute("userSession");
+        carData.setUser(user);
         if (result.hasErrors()) {
             return "carData";
         }
         carDataService.saveCarData(carData);
         return "redirect:list";
     }
+
     @ModelAttribute("vehicleType")
     public List<String> getVehicleType() {
         List<String> vehicleType = new ArrayList<>();

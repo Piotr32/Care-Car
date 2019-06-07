@@ -24,7 +24,7 @@
                     <div class="card-body">
                         <h5 class="card-title">${car.brand} ${car.model}</h5>
                         <h6 class="card-subtitle mb-2 text-muted">${car.vehicleName}</h6>
-                        <p class="card-text">${car.fuelType} ${car.vinNo}</p>
+                        <p class="card-text">${car.fuelType} </p>
                         <div class="container">
                             <div class="col-md-12">
                                 <header class="header-panel">

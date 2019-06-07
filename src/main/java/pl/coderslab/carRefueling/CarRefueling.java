@@ -2,6 +2,7 @@ package pl.coderslab.carRefueling;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import pl.coderslab.carData.CarData;
+import pl.coderslab.user.User;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -32,15 +33,19 @@ public class CarRefueling {
 
     private double total; // kwota za paliwo
 
+    @ManyToOne
+    private User user;
+
     public CarRefueling() {
     }
 
-    public CarRefueling(CarData carData, String date, @NotBlank String howManyLiters, String fuelType, double total) {
+    public CarRefueling(CarData carData, String date, @NotBlank String howManyLiters, String fuelType, double total, User user) {
         this.carData = carData;
         this.date = date;
         this.howManyLiters = howManyLiters;
         this.fuelType = fuelType;
         this.total = total;
+        this.user = user;
     }
 
     public Long getId() {
@@ -91,16 +96,12 @@ public class CarRefueling {
         this.total = total;
     }
 
-    @Override
-    public String toString() {
-        return "CarRefueling{" +
-                "id=" + id +
-                ", carData=" + carData +
-                ", date='" + date + '\'' +
-                ", howManyLiters='" + howManyLiters + '\'' +
-                ", fuelType='" + fuelType + '\'' +
-                ", total=" + total +
-                '}';
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
 

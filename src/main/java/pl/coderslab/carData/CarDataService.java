@@ -36,5 +36,9 @@ public class CarDataService {
     public List<CarData> findAll() {
         return carDataRepository.findAll();
     }
+
+    public List<CarData> findByCarDataByUserIdQuery(Long id) {
+        return carDataRepository.findByCarDataByUserIdQuery(id);
+    }
 }
 
