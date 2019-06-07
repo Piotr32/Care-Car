@@ -60,7 +60,7 @@ public class CarRefuelingController {
     @GetMapping(value = "/list", produces = "text/html; charset=UTF-8")
     public String CarRefuelingList(Model model, HttpSession session) {
         User user = (User) session.getAttribute("userSession");
-        List<CarRefueling> carRefueling = carRefuelingService.findAllCarRefueling();
+        List<CarRefueling> carRefueling = carRefuelingService.findByCarRefuelingByUserIdQuery(user.getId());
         model.addAttribute("carRefueling", carRefueling);
         model.addAttribute("totalCost",carRefuelingService.getTotalRefuelingCost());
         return "carRefuelingList";

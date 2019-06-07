@@ -2,7 +2,6 @@ package pl.coderslab.carHistory;
 
 import pl.coderslab.carData.CarData;
 import pl.coderslab.user.User;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
@@ -18,16 +17,16 @@ public class CarHistory {
     private CarData carData;
 
     @NotBlank
-    private String event; // wydarzenie;
+    private String event;
 
 
-    private String date; // data wydarzenia;
+    private String date;
 
-    private String howManyKmDriven; // ile kilometrów zostało przejechane;
+    private String howManyKmDriven;
 
-    private double expenses; // wydatki
+    private double expenses;
 
-    private String notes; // notes
+    private String notes;
 
     @ManyToOne
     private User user;

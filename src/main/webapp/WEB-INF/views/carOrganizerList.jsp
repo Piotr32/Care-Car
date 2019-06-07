@@ -44,7 +44,6 @@
                 <tr>
                     <th>Wydarzenie</th>
                     <th>Data</th>
-                    <th>Ile kilometrów zostało przejechane</th>
                     <th>Wydatki</th>
 
                     <th style="width:17%">Akcja</th>

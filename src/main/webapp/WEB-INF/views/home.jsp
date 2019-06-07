@@ -17,10 +17,6 @@
 </head>
 <body>
 <%@include file="homeHeader.jspf" %>
-<br>
-<br>
-<br>
-<br>
 
 </body>
 </html>

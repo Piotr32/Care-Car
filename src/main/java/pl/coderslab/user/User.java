@@ -1,7 +1,5 @@
 package pl.coderslab.user;
 
-
-
 import pl.coderslab.carData.CarData;
 import javax.persistence.*;
 import javax.validation.constraints.Email;

@@ -47,7 +47,7 @@ public class CarOrganizerController {
     @GetMapping(value = "/list", produces = "text/html; charset=UTF-8")
     public String carOrganizerList(Model model, HttpSession session) {
         User user = (User) session.getAttribute("userSession");
-        List<CarOrganizer> carOrganizer = carOrganizerService.findAllCarOrganizer();
+        List<CarOrganizer> carOrganizer = carOrganizerService.findByCarOrganizerByUserIdQuery(user.getId());
         model.addAttribute("carOrganizer", carOrganizer);
         model.addAttribute("totalExpenses",carOrganizerService.getExpensesOrganizerCost());
         model.addAttribute("date", carOrganizerService.findClosest());

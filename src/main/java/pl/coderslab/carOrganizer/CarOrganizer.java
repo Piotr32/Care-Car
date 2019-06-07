@@ -20,14 +20,14 @@ public class CarOrganizer {
     private CarData carData;
 
     @NotBlank
-    private String event; // wydarzenie;
+    private String event;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate date; //data
+    private LocalDate date;
 
-    private double expenses; // wydatki
+    private double expenses;
 
-    private String notes; // notes
+    private String notes;
 
     @ManyToOne
     private User user;

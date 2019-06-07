@@ -65,8 +65,8 @@
     </div>
      <div class="row">
      <div class="form-group col-md-4">
-    <label for="carSelectBrand">Pojazd</label>
-    <form:select path="carData.id" items="${carDataList}" itemLabel="Brand" itemValue="id" id="carSelectBrand"/>
+    <label for="carSelectvehicleName">Pojazd</label>
+    <form:select path="carData.id" items="${carDataList}" itemLabel="vehicleName" itemValue="id" id="carSelectvehicleName"/>
     <form:errors path="carData" element="div"/>
      </div>
      </div>

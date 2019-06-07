@@ -25,8 +25,5 @@ public class UserService {
         return userRepository.findByUsername(username);
     }
 
-    //public User findByUserIdQuery(Long id) {
-    //return userRepository.findByUserIdQuery(User.id);
-    //}
 }
 

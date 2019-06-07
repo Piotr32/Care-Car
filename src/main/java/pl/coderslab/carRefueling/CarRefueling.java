@@ -1,14 +1,10 @@
 package pl.coderslab.carRefueling;
 
-import org.springframework.format.annotation.DateTimeFormat;
 import pl.coderslab.carData.CarData;
 import pl.coderslab.user.User;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
-import java.time.LocalDate;
+
 
 
 @Entity
@@ -24,14 +20,14 @@ public class CarRefueling {
     private CarData carData;
 
 
-    private String date; //data
+    private String date;
 
     @NotBlank
-    private String howManyLiters; // ile litrów zatankowano
+    private String howManyLiters;
 
-    private String fuelType; // rodzaj paliwa
+    private String fuelType;
 
-    private double total; // kwota za paliwo
+    private double total;
 
     @ManyToOne
     private User user;

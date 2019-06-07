@@ -29,16 +29,6 @@ public class UserController {
         return "user";
     }
 
-//    @PostMapping("/addUser")
-//    public String addUser(HttpSession session, @ModelAttribute @Validated User user, BindingResult result) {
-//        User user = (User)session.getAttribute("userSession");
-//        if (result.hasErrors()) {
-//            return "addUser";
-//        }
-//        user.setUsername();
-//        userService.saveUser(user);
-//        return "redirect:all";
-//    }
 
     @PostMapping("/add")
     public String addUser(@ModelAttribute @Valid User user, BindingResult result) {

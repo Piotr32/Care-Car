@@ -5,7 +5,6 @@ import pl.coderslab.carHistory.CarHistory;
 import pl.coderslab.carOrganizer.CarOrganizer;
 import pl.coderslab.carRefueling.CarRefueling;
 import pl.coderslab.user.User;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -34,47 +33,46 @@ public class CarData {
     @OneToMany(mappedBy = "carData", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<CarOrganizer> carOrganizer = new HashSet<>();
 
-    private String vehicleType; // rodzaj pojazdu, do wyboru Car, Motorbike
+    private String vehicleType;
 
     @NotBlank
-    private String vehicleName; // nazwa pojazdu
+    private String vehicleName;
 
     @NotBlank
-    private String brand; // Marka
+    private String brand;
 
     @NotBlank
-    private String model; // Model
+    private String model;
 
 
-    private String fuelType; // Rodzaj paliwa, Petrol, Diesel, Gas (LPG), Electric, Hybrid, Petrol and Gas
+    private String fuelType;
 
     @NotBlank
     @Size(min = 17, max = 17)
-    private String vinNo; // numer Vin
+    private String vinNo;
 
     @NotBlank
-    private String oilTankCapacity; // pojemnośc zbiornika oleju;
+    private String oilTankCapacity;
 
 
-    private String typesOfOil; // rodzaj oleju;
-
-    // Purchase (kupno), and Sale (sprzedaż)
-
-    private String datePurchase; // data
+    private String typesOfOil;
 
 
-    private int meterStatusPurchase; // stan licznika
+    private String datePurchase;
 
 
-    private BigDecimal howMuchWasItPurchase; // ile kosztował
-
-    private String dateSale; // data
+    private int meterStatusPurchase;
 
 
-    private int meterStatusSale; // stan licznika
+    private BigDecimal howMuchWasItPurchase;
+
+    private String dateSale;
 
 
-    private BigDecimal howMuchWasItSale; // ile kosztował
+    private int meterStatusSale;
+
+
+    private BigDecimal howMuchWasItSale;
 
     public CarData() {
     }
